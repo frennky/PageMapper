@@ -1,0 +1,22 @@
+﻿@{
+    var uri = new Uri(Model.Url);
+    var relativeUrl = Model.Url.Replace(string.Format("{0}://{1}", uri.Scheme, uri.Authority), string.Empty);
+}
+
+<?php
+
+require_once '../Common/BasePageObject.php';
+
+class @Model.ClassName extends BasePageObject
+{
+    protected $relativeUrl = '@relativeUrl';
+
+	public $locators = array(
+	@foreach(var property in Model.Properties)
+	{
+		<text>'@property.Name' => array(PHPWebDriver_WebDriverBy::@property.LocatorType.ToUpper(), '@property.Locator'),</text>
+	}
+	);
+}
+
+?>

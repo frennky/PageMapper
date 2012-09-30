@@ -1,0 +1,5 @@
+﻿@foreach(var property in Model.Properties)
+{
+<text>[FindsBy(How = How.@property.LocatorType, Using = "@property.Locator")]
+public IWebElement @property.Name { get; set; }</text>
+}
